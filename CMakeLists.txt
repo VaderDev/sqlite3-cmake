@@ -1,9 +1,10 @@
 PROJECT(sqlite3)
 cmake_minimum_required(VERSION 2.8)
 
-include_directories(${CMAKE_SOURCE_DIR}/src)
 add_library(sqlite3 STATIC src/sqlite3.c src/sqlite3.h src/sqlite3ext.h)
 add_executable(sqlite src/sqlite3.c src/shell.c src/sqlite3.h src/sqlite3ext.h)
+target_include_directories(sqlite PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(sqlite3 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 #set_target_properties(sqlite PROPERTIES OUTPUT_NAME sqlite3)
 
 add_definitions(-DSQLITE_ENABLE_RTREE)
@@ -18,7 +19,7 @@ add_definitions(-DSQLITE_ENABLE_STAT4)
 
 if(WIN32)
   add_custom_command(TARGET sqlite POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:sqlite> ${CMAKE_BINARY_DIR}/sqlite3.exe
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:sqlite> ${CMAKE_CURRENT_BINARY_DIR}/sqlite3.exe
     DEPENDS sqlite
   )
   install(FILES sqlite3.exe DESTINATION bin)
