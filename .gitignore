@@ -7,4 +7,6 @@ install_manifest.txt
 *.exp
 *.manifest
 *.lib
+*.a
 build
+sqlite
