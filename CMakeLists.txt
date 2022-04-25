@@ -25,7 +25,7 @@ if(WIN32)
   install(FILES sqlite3.exe DESTINATION bin)
 else()
   include(FindThreads)
-  target_link_libraries(sqlite m ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+  target_link_libraries(sqlite m dl ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
   install(TARGETS sqlite RUNTIME DESTINATION bin)
 endif()
 
