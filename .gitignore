@@ -10,3 +10,6 @@ install_manifest.txt
 *.a
 build
 sqlite
+
+upstream_build
+
