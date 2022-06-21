@@ -1,15 +1,17 @@
 sqlite3-cmake
 =============
 
-Simplest CMake script + full sqlite3 amalgamation distibution to build with different compilers
+Simple CMake script + full sqlite3 amalgamation distibution
 
-Update from the upstream (based on git tags from [sqlite/tags](https://github.com/sqlite/sqlite/tags)):
+Update from the upstream (based on [sqlite/tags](https://github.com/sqlite/sqlite/tags)):
 ```
-  ./update "version-3.38.5"
+./update.sh "version-3.38.5"
 ```
 
 Build
 ```
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/libs
-  ninja install
+mkdir -p build
+cd build
+cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/desired/path ..
+ninja install
 ```
