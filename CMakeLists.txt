@@ -24,6 +24,7 @@ endif()
 
 OPTION(BUILD_SHELL "Build the sqlite3 shell." ON)
 
+
 # -----------------------------------------------------------------------------------
 
 add_library(sqlite3 STATIC src/sqlite3.c src/sqlite3.h src/sqlite3ext.h)
@@ -38,9 +39,9 @@ endif()
 add_definitions(-DSQLITE_ENABLE_RTREE)
 add_definitions(-DSQLITE_ENABLE_FTS4)
 add_definitions(-DSQLITE_ENABLE_FTS5)
-add_definitions(-DSQLITE_ENABLE_JSON1)
 add_definitions(-DSQLITE_ENABLE_RBU)
 add_definitions(-DSQLITE_ENABLE_STAT4)
+# add_definitions(-DSQLITE_ENABLE_JSON1) since 3.38 its builtin
 
 # Uncomment this for single-threaded variant (faster)
 #add_definitions(-DSQLITE_THREADSAFE=0)
